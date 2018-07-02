@@ -54,6 +54,30 @@ public class RedisService {
         }
     }
 
+    public <T> boolean setnx(KeyPrefix prefix, String key, T value) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            selectDb(jedis,0);
+            String str = beanToString(value);
+            if (str == null || str.length() <= 0) {
+                return false;
+            }
+
+            String realKey = prefix.getPrefix() + key;
+            int seconds = prefix.expireSeconds();
+            if (seconds <= 0) {
+                jedis.setnx(realKey, str);
+            } else {
+                jedis.setnx(realKey, str);
+                jedis.expire(realKey,seconds);
+            }
+            return true;
+        } finally {
+            returnPool(jedis);
+        }
+    }
+
     public <T> boolean exists(KeyPrefix prefix,String key){
         Jedis jedis = null;
         try {
