@@ -1,4 +1,4 @@
-package com.imooc.miaosha.validator.util;
+package com.imooc.miaosha.util;
 
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -44,7 +44,7 @@ public final class MD5Util {
     }
 
     public static void main(String[] args) {
-        System.out.println(inputPassToDbPass("123456","12345678"));
+        System.out.println(inputPassToDbPass("123456","1a2b3c4d"));
         System.out.println(inputPassToFormPass("123456"));
         System.out.println(formPassToDBPass(inputPassToFormPass("123456"),"12345678"));;
     }

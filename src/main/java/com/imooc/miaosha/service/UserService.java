@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface UserService {
 
-    boolean login(HttpServletResponse response, LoginVo loginVo);
+    String login(HttpServletResponse response, LoginVo loginVo);
 
     MiaoshaUser getByToken(HttpServletResponse response, String token);
 }

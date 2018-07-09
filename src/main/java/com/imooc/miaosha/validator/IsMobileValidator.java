@@ -1,6 +1,6 @@
 package com.imooc.miaosha.validator;
 
-import com.imooc.miaosha.validator.util.ValidatorUtil;
+import com.imooc.miaosha.util.ValidatorUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;

@@ -1,4 +1,4 @@
-package com.imooc.miaosha.validator.util;
+package com.imooc.miaosha.util;
 
 import org.apache.commons.lang3.StringUtils;
 
