@@ -103,6 +103,20 @@ public class RedisService {
         }
     }
 
+    public boolean delete(KeyPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis =  jedisPool.getResource();
+            selectDb(jedis,0);
+            //生成真正的key
+            String realKey  = prefix.getPrefix() + key;
+            long res = jedis.del(realKey);
+            return res > 0;
+        }finally {
+            returnPool(jedis);
+        }
+    }
+
     /**
      * 减少值
      * */

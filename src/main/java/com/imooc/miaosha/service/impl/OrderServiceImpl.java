@@ -52,4 +52,10 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.insertSelective(miaoshaOrder);
         return orderInfo;
     }
+
+    @Override
+    public OrderInfo getOrderById(long orderId) {
+
+        return orderInfoMapper.selectByPrimaryKey(orderId);
+    }
 }
