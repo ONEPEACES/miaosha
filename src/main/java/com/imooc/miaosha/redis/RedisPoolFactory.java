@@ -13,8 +13,8 @@ public class RedisPoolFactory {
     RedisConfig redisConfig;
 
     /**
-     * @Bean 注解用在方法上用于给Spring山城一个bean
      * @return
+     * @Bean 注解用在方法上用于给Spring注入一个bean
      */
     @Bean
     public JedisPool jedisPoolFactory() {

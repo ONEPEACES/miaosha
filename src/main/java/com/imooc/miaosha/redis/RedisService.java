@@ -23,6 +23,7 @@ public class RedisService {
             selectDb(jedis,0);
             //生成真正的key
             String realKey = prefix.getPrefix() + key;
+
             String str = jedis.get(realKey);
             T t = stringToBean(str, clazz);
             return t;
@@ -139,7 +140,7 @@ public class RedisService {
      * @param <T>
      * @return 返回对象的json序列化值
      */
-    private <T> String beanToString(T value) {
+    public static <T> String beanToString(T value) {
         if (value == null) {
             return null;
         }
@@ -165,7 +166,7 @@ public class RedisService {
      * @return
      */
     @SuppressWarnings("unchecked")
-    private <T> T stringToBean(String str, Class<T> clazz) {
+    public static <T> T stringToBean(String str, Class<T> clazz) {
         if (str == null || str.length() <= 0 || clazz == null) {
             return null;
         }

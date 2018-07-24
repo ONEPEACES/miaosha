@@ -18,5 +18,5 @@ public interface MiaoshaGoodsMapper {
 
     int updateByPrimaryKey(MiaoshaGoods record);
 
-    void updateMiaoshaGoodsWithGoods(@Param("miaoshaGoods") MiaoshaGoods g);
+    int updateMiaoshaGoodsWithGoods(@Param("miaoshaGoods") MiaoshaGoods g);
 }

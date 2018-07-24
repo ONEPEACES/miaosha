@@ -76,6 +76,10 @@
         $.ajax({
             url: "/login/do_login",
             type: "POST",
+            /**
+             * 发送的json对象，controller里面直接用对象接收即可
+             * 若通过JSON.stringfy转为json字符串，则接收方通过@RequestBody进行接收
+             */
             data:{
                 mobile:$("#mobile").val(),
                 password: password

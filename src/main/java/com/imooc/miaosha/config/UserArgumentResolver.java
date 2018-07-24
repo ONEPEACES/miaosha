@@ -1,5 +1,6 @@
 package com.imooc.miaosha.config;
 
+import com.imooc.miaosha.access.UserContext;
 import com.imooc.miaosha.constant.GlobalConst;
 import com.imooc.miaosha.entity.MiaoshaUser;
 import com.imooc.miaosha.service.UserService;
@@ -31,28 +32,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        HttpServletRequest nativeRequest = webRequest.getNativeRequest(HttpServletRequest.class);
-        HttpServletResponse nativeResponse = webRequest.getNativeResponse(HttpServletResponse.class);
-
-        String paramToken = nativeRequest.getParameter(GlobalConst.COOKIE_NAME_TOKEN);
-        String cookieToken = getCookieValue(nativeRequest, GlobalConst.COOKIE_NAME_TOKEN);
-        if (StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)) {
-            return null;
-        }
-        String token = StringUtils.isEmpty(paramToken)?cookieToken:paramToken;
-        return userService.getByToken(nativeResponse,token);
+        return UserContext.getUser();
     }
 
-    private String getCookieValue(HttpServletRequest request, String cookieName) {
-        Cookie[] cookies = request.getCookies();
-        if(cookies == null || cookies.length <= 0){
-            return null;
-        }
-        for (Cookie cookie : cookies) {
-            if(cookie.getName().equals(cookieName)){
-                return cookie.getValue();
-            }
-        }
-        return null;
-    }
 }

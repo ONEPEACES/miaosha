@@ -2,7 +2,6 @@ package com.imooc.miaosha.service.impl;
 
 import com.imooc.miaosha.dao.GoodsMapper;
 import com.imooc.miaosha.dao.MiaoshaGoodsMapper;
-import com.imooc.miaosha.entity.Goods;
 import com.imooc.miaosha.entity.MiaoshaGoods;
 import com.imooc.miaosha.service.GoodsService;
 import com.imooc.miaosha.vo.GoodsVo;
@@ -37,7 +36,11 @@ public class GoodsServiceImpl implements GoodsService {
 
 
     @Override
-    public void updateGoodsWithGoodsId(MiaoshaGoods g) {
-        miaoshaGoodsMapper.updateMiaoshaGoodsWithGoods(g);
+    public boolean updateGoodsWithGoodsId(MiaoshaGoods g) {
+        int result = miaoshaGoodsMapper.updateMiaoshaGoodsWithGoods(g);
+        if(result != 0){
+            return true;
+        }
+        return false;
     }
 }

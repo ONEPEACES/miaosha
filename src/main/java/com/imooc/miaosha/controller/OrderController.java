@@ -31,7 +31,7 @@ public class OrderController {
     @RequestMapping("/detail")
     @ResponseBody
     public Result<OrderDetailVo> getOrderDetail(MiaoshaUser user,
-                                            @RequestParam("orderId") long orderId) {
+                                                @RequestParam("orderId") long orderId) {
         if (user == null) {
             return Result.error(CodeMsg.SESSION_ERROR);
         }

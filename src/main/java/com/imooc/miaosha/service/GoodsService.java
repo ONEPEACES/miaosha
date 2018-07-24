@@ -11,5 +11,5 @@ public interface GoodsService {
 
     GoodsVo getGoodsVoById(long goodsId);
 
-    void updateGoodsWithGoodsId(MiaoshaGoods g);
+    boolean updateGoodsWithGoodsId(MiaoshaGoods g);
 }

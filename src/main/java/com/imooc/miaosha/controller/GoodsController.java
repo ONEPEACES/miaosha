@@ -65,6 +65,11 @@ public class GoodsController {
 //        return html;
     }
 
+    /**
+     * 返回的是一个经过视图解析器解析后的页面
+     * @param
+     * @return
+     */
     @RequestMapping(value = "/to_list1", produces = "text/html")
     @ResponseBody
     public String toList1(Model model, MiaoshaUser user, HttpServletRequest request, HttpServletResponse response) {
