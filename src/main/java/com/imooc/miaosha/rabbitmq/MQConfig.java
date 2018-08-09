@@ -34,6 +34,8 @@ public class MQConfig {
 
     @Bean
     public TopicExchange topicExchange() {
+        // exchange 路由概念
+        // 通过一定的exchange规则将数据路由到接收方
         return new TopicExchange(TOPIC_EXCHANGE);
     }
 
